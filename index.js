@@ -30,7 +30,7 @@ app.post('/', function (req, res) {
 
 var genPushData = function(req){
     var sender_text = req.body.events[0].message.text;
-    var sender_userid = req.body.events[0].source.sender_userid;
+    var sender_userid = req.body.events[0].source.userid;
     var postData = {"to": sender_userid,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text}]};
     return postData;
 }

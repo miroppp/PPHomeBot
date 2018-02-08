@@ -10,12 +10,14 @@ app.get('/', function (req, res) {
   });
 
 app.post('/', function (req, res) {
-  console.log(JSON.stringify(req.body));
+  //console.log(JSON.stringify(req.body));
   var sender_replytoken = req.body.events[0].replyToken;
   var sender_text = req.body.events[0].message.text;
-  var postData = {"replyToken": sender_replytoken,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text},{"type":"text","text":"Hello, I am PPHomeBot"}]};
+  var sender_userid = req.body.events[0].source.sender_userid;
+  //var postData = {"replyToken": sender_replytoken,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text},{"type":"text","text":"Hello, I am PPHomeBot"}]};
+  var postData = {"to": sender_userid,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text}]};
   request({
-      url: "https://api.line.me/v2/bot/message/reply",
+      url: "https://api.line.me/v2/bot/message/push",
       method: "POST",
       headers: {
           "content-type": "application/json",

@@ -11,11 +11,10 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   //console.log(JSON.stringify(req.body));
-  var sender_replytoken = req.body.events[0].replyToken;
-  var sender_text = req.body.events[0].message.text;
-  var sender_userid = req.body.events[0].source.sender_userid;
+  var postData = genPushData(req);
+  //var sender_replytoken = req.body.events[0].replyToken;
   //var postData = {"replyToken": sender_replytoken,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text},{"type":"text","text":"Hello, I am PPHomeBot"}]};
-  var postData = {"to": sender_userid,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text}]};
+  
   request({
       url: "https://api.line.me/v2/bot/message/push",
       method: "POST",
@@ -28,6 +27,13 @@ app.post('/', function (req, res) {
           console.log(response);
       });
 });
+
+var genPushData = function(req){
+    var sender_text = req.body.events[0].message.text;
+    var sender_userid = req.body.events[0].source.sender_userid;
+    var postData = {"to": sender_userid,"messages":[{"type":"text","text":"Hello, YOU SAY "+sender_text}]};
+    return postData;
+}
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening for messaging');

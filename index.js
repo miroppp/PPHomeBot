@@ -1,5 +1,3 @@
-import { read } from 'fs';
-
 var express = require('express')
     , bodyParser = require('body-parser'
     , request = require('request') ) ;

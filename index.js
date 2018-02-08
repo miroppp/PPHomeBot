@@ -19,7 +19,7 @@ app.post('/', function (req, res) {
       method: "POST",
       headers: {
           "content-type": "application/json",
-          "Authorization": "p2G+zUDzkt9psnuVOSrFAVx7LE4maUY1hYAE3PJQdHSbCo9phDLMbubN699BcbgyNNeCLCN+JGSlurFCxOU8dR3ozeWIEqemrDg4t0PUuBO+mM/NBKosjOQU+x7onbxMOBOt35ClaLDz/a+e6XLJBgdB04t89/1O/w1cDnyilFU="
+          "Authorization": "Bearer p2G+zUDzkt9psnuVOSrFAVx7LE4maUY1hYAE3PJQdHSbCo9phDLMbubN699BcbgyNNeCLCN+JGSlurFCxOU8dR3ozeWIEqemrDg4t0PUuBO+mM/NBKosjOQU+x7onbxMOBOt35ClaLDz/a+e6XLJBgdB04t89/1O/w1cDnyilFU="
       },
       body: JSON.stringify(postData)
       }, function(error, response, body){

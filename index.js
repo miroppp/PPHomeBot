@@ -45,7 +45,7 @@ app.post('/', function (req, res) {
     },
     body: JSON.stringify(postData.body)
   }, function (error, response, body){
-    console.log(response);
+    //console.log(response);
   });
 });
 
